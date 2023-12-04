@@ -4,37 +4,42 @@
 
 # Winget
 $apps = @(
-    @{name = "Adobe.Acrobat.Reader.64-bit" },
-    @{name = "Chocolatey.ChocolateyGUI" },
-    @{name = "Google.Chrome" },
-    @{name = "Dropbox.Dropbox" },
-    @{name = "Logitech.OptionsPlus" },
-    @{name = "Microsoft.PowerShell" },
-    @{name = "Microsoft.PowerToys" },
-    @{name = "Microsoft.WindowsTerminal" },
-    @{name = "Spotify.Spotify" },
-    @{name = "VideoLAN.VLC" },
-    @{name = "WhatsApp.WhatsApp" },
-    @{name = "Git.Git" },
-    @{name = "GitHub.GitHubDesktop" },
-    @{name = "SublimeHQ.SublimeText.4" },
-    @{name = "SublimeHQ.SublimeMerge" },
-    @{name = "JetBrains.Toolbox" },
-    @{name = "JetBrains.PHPStorm" },
-    @{name = "Postman.Postman" },
-    @{name = "PuTTY.PuTTY" },
-    @{name = "7zip.7zip" },
-    @{name = "JAMSoftware.TreeSize" },
-    @{name = "DEVCOM.JetBrainsMonoNerdFont" },
-    @{name = "Samsung.Dex" },
-    @{name = "WinSCP.WinSCP" }
+    @{name = "Adobe.Acrobat.Reader.64-bit", version = "" },
+    @{name = "Chocolatey.ChocolateyGUI", version = "" },
+    @{name = "Google.Chrome", version = "" },
+    @{name = "Dropbox.Dropbox", version = "" },
+    @{name = "Logitech.OptionsPlus", version = "" },
+    @{name = "Microsoft.PowerShell", version = "" },
+    @{name = "Microsoft.PowerToys", version = "" },
+    @{name = "Microsoft.WindowsTerminal", version = "" },
+    @{name = "Spotify.Spotify", version = "" },
+    @{name = "VideoLAN.VLC", version = "" },
+    @{name = "WhatsApp.WhatsApp", version = "" },
+    @{name = "Git.Git", version = "" },
+    @{name = "GitHub.GitHubDesktop", version = "" },
+    @{name = "SublimeHQ.SublimeText.4", version = "" },
+    @{name = "SublimeHQ.SublimeMerge", version = "" },
+    @{name = "JetBrains.Toolbox", version = "" },
+    @{name = "JetBrains.PHPStorm", version = "" },
+    @{name = "Postman.Postman", version = "" },
+    @{name = "PuTTY.PuTTY", version = "" },
+    @{name = "7zip.7zip", version = "" },
+    @{name = "JAMSoftware.TreeSize", version = "" },
+    @{name = "DEVCOM.JetBrainsMonoNerdFont", version = "" },
+    @{name = "Samsung.Dex", version = "" },
+    @{name = "OpenJS.NodeJS.LTS", version = "16.19.0" },
+    @{name = "WinSCP.WinSCP", version = "" }
 );
 Foreach ($app in $apps) {
     $listApp = winget list --exact -q $app.name
     
     if (![String]::Join("", $listApp).Contains($app.name)) {
         Write-host "Installing: " $app.name
-        winget install -e -h --accept-source-agreements --accept-package-agreements --id $app.name 
+        if ([string]::IsNullOrEmpty($app.version)) {
+            winget install -e -h --accept-source-agreements --accept-package-agreements --id $app.name 
+        } else {
+            winget install -e -h --accept-source-agreements --accept-package-agreements --id $app.name -v $app.version
+        }
     } else {
         Write-host "Skipped: " $app.name " (already installed)"
     }
