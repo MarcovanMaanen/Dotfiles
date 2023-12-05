@@ -1,3 +1,5 @@
+[console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
+
 New-Alias g goto
 
 function goto {
