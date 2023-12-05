@@ -1,5 +1,9 @@
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
+
+Install-Module -Name Terminal-Icons -Repository PSGallery
+
+
 New-Alias g goto
 
 function goto {
