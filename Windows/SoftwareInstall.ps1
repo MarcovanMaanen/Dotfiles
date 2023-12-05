@@ -27,7 +27,7 @@ $apps = @(
     @{name = "JAMSoftware.TreeSize", version = "" },
     @{name = "DEVCOM.JetBrainsMonoNerdFont", version = "" },
     @{name = "Samsung.Dex", version = "" },
-    @{name = "OpenJS.NodeJS.LTS", version = "16.19.0" },
+    @{name = "CoreyButler.NVMforWindows", version = "" },
     @{name = "WinSCP.WinSCP", version = "" }
 );
 Foreach ($app in $apps) {
