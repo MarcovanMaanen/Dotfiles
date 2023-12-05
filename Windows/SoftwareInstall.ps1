@@ -64,3 +64,8 @@ Foreach ($app in $apps) {
         Write-host "Skipped: " $app.name " (already installed)"
     }
 }
+
+# Powershell 
+Install-Module Terminal-Icons -Scope CurrentUser
+Install-Module -Name devtoolbox
+Install-Module PSReadLine -RequiredVersion 2.2.2 -Force
