@@ -1,9 +1,5 @@
 [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
 
-
-Install-Module -Name Terminal-Icons -Repository PSGallery
-Import-Module -Name Terminal-Icons
-
 New-Alias g goto
 
 function goto {
@@ -24,3 +20,11 @@ function goto {
 $ENV:STARSHIP_CONFIG = "$HOME\.starship\starship.toml"
 $ENV:STARSHIP_CACHE = "$HOME\AppData\Local\Temp"
 Invoke-Expression (&starship init powershell)
+
+Import-Module Terminal-Icons
+Import-Module devtoolbox
+Import-Module PSReadLine
+
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -EditMode Windows
