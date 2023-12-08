@@ -47,8 +47,8 @@ format = 'at [$path]($style)[$read_only]($read_only_style) '
 [git_branch]
 symbol = ' '
 format = 'branch [$symbol$branch]($style)'
-# truncation_length = 15
-# truncation_symbol = '…/'
+truncation_length = 18
+truncation_symbol = '…/'
 style = 'bold green'
 
 # Shows current git status
@@ -56,12 +56,12 @@ style = 'bold green'
 format = '[$all_status$ahead_behind]($style) '
 style = 'bold green'
 conflicted = '🏳'
-up_to_date = ''
+up_to_date = ' ✓ '
 untracked = ' '
 ahead = '⇡${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
 behind = '⇣${count}'
-stashed = ' '
+stashed = '  '
 modified = ' '
 staged = '[++\($count\)](green)'
 renamed = '襁 '
