@@ -52,6 +52,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 $apps = @(
     @{name = "starship" },
     @{name = "terminal-icons.powershell" },
+    @{name = "beekeeper-studio.install -y" },
     @{name = "sysinternals" }
 );
 Foreach ($app in $apps) {
