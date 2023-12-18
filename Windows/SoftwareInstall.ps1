@@ -1,45 +1,43 @@
 # Make sure the Microsoft App Installer is installed:
 # https://www.microsoft.com/en-us/p/app-installer/9nblggh4nns1
+# If you are running Windows 10 or lower please check if you have the correct rights set.
+# If you do not have the correct rights than run: 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser' to set it.
 # Need to run as Administrator
 
 # Winget
 $apps = @(
-    @{name = "Adobe.Acrobat.Reader.64-bit", version = "" },
-    @{name = "Chocolatey.ChocolateyGUI", version = "" },
-    @{name = "Google.Chrome", version = "" },
-    @{name = "Dropbox.Dropbox", version = "" },
-    @{name = "Logitech.OptionsPlus", version = "" },
-    @{name = "Microsoft.PowerShell", version = "" },
-    @{name = "Microsoft.PowerToys", version = "" },
-    @{name = "Microsoft.WindowsTerminal", version = "" },
-    @{name = "Spotify.Spotify", version = "" },
-    @{name = "VideoLAN.VLC", version = "" },
-    @{name = "WhatsApp.WhatsApp", version = "" },
-    @{name = "Git.Git", version = "" },
-    @{name = "GitHub.GitHubDesktop", version = "" },
-    @{name = "SublimeHQ.SublimeText.4", version = "" },
-    @{name = "SublimeHQ.SublimeMerge", version = "" },
-    @{name = "JetBrains.Toolbox", version = "" },
-    @{name = "JetBrains.PHPStorm", version = "" },
-    @{name = "Postman.Postman", version = "" },
-    @{name = "PuTTY.PuTTY", version = "" },
-    @{name = "7zip.7zip", version = "" },
-    @{name = "JAMSoftware.TreeSize", version = "" },
-    @{name = "DEVCOM.JetBrainsMonoNerdFont", version = "" },
-    @{name = "Samsung.Dex", version = "" },
-    @{name = "CoreyButler.NVMforWindows", version = "" },
-    @{name = "WinSCP.WinSCP", version = "" }
+    @{name = "Adobe.Acrobat.Reader.64-bit" },
+    @{name = "Chocolatey.ChocolateyGUI" },
+    @{name = "Google.Chrome" },
+    @{name = "Dropbox.Dropbox" },
+    @{name = "Logitech.OptionsPlus" },
+    @{name = "Microsoft.PowerShell" },
+    @{name = "Microsoft.PowerToys" },
+    @{name = "Microsoft.WindowsTerminal" },
+    @{name = "Spotify.Spotify" },
+    @{name = "VideoLAN.VLC" },
+    @{name = "WhatsApp.WhatsApp" },
+    @{name = "Git.Git" },
+    @{name = "GitHub.GitHubDesktop" },
+    @{name = "SublimeHQ.SublimeText.4" },
+    @{name = "SublimeHQ.SublimeMerge" },
+    @{name = "JetBrains.Toolbox" },
+    @{name = "JetBrains.PHPStorm" },
+    @{name = "Postman.Postman" },
+    @{name = "PuTTY.PuTTY" },
+    @{name = "7zip.7zip" },
+    @{name = "JAMSoftware.TreeSize" },
+    @{name = "DEVCOM.JetBrainsMonoNerdFont" },
+    @{name = "Samsung.Dex" },
+    @{name = "CoreyButler.NVMforWindows" },
+    @{name = "WinSCP.WinSCP" }
 );
 Foreach ($app in $apps) {
     $listApp = winget list --exact -q $app.name
     
     if (![String]::Join("", $listApp).Contains($app.name)) {
         Write-host "Installing: " $app.name
-        if ([string]::IsNullOrEmpty($app.version)) {
-            winget install -e -h --accept-source-agreements --accept-package-agreements --id $app.name 
-        } else {
-            winget install -e -h --accept-source-agreements --accept-package-agreements --id $app.name -v $app.version
-        }
+        winget install -e -h --accept-source-agreements --accept-package-agreements --id $app.name 
     } else {
         Write-host "Skipped: " $app.name " (already installed)"
     }
